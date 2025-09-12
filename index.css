@@ -18,8 +18,17 @@ h1,h2,h3{
 }
 h1{
     text-align: center;
+    font-size: 5vh;
 }
-
+h2{
+    font-size: 4vh;
+}
+h3{
+    font-size: 3vh;
+}
+h4{
+    font-size: 2.5vh;
+}
 h3,h4{
     text-align: justify;
 }
@@ -59,8 +68,8 @@ button:hover {
 .imgContenido{
     text-align: center;
     border-radius: 200%;
-    width: 35vh;
-    height: 35vh;
+    width: 30vh;
+    height: 30vh;
 }
 .containerProyectos{
     display: grid;
@@ -150,6 +159,18 @@ textarea{
     body{
         margin: 0vh 0vh;
     }
+    h1{
+        font-size: 4vh;
+    }
+    h2{
+        font-size:3vh;
+    }
+    h3{
+        font-size:3vh;
+    }
+    h4{
+        font-size: 2vh;
+    }
     .container{
         padding: 1vh;
     }
@@ -189,6 +210,18 @@ textarea{
     }
     body{
         margin: 0vh 0vh;
+    }
+    h1{
+        font-size: 4vh;
+    }
+    h2{
+        font-size:3vh;
+    }
+    h3{
+        font-size:3vh;
+    }
+    h4{
+        font-size: 1.8vh;
     }
     .container{
         padding: 1vh;
