@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding:0;
+}
+a{
+    color: #ed96ff;
+}
+body{
+    background: black ;
+    color: white;
+    margin: 0vh 30vh;
+}
+h1,h2,h3,h4{
+    margin:1vh 0vh;
+}
+h1,h2,h3{
+    color: #ed96ff;
+}
+h1{
+    text-align: center;
+}
+
+h3,h4{
+    text-align: justify;
+}
+img{
+    width: 8vh;
+    height: 8vh;
+}
+button{
+    padding: 1vh;
+    background:#88389c;
+}
+.iconNav{
+    text-align: end;
+    background: #511661;
+    border:1px solid #88389c;
+}
+.icon{
+    width: 5vh;
+    height: 5vh;
+}
+.container{
+    padding: 2vh;
+}
+.contenido{
+    padding:4vh;
+    border:1px solid #88389c;
+}
+.imgContenido{
+    text-align: center;
+    border-radius: 200%;
+    width: 35vh;
+    height: 35vh;
+}
+.containerProyectos{
+    display: grid;
+    padding: 2vh;
+    grid-template-columns: repeat(2, 1fr);
+    gap:2vh;
+    align-items: start;
+}
+
+.proyecto{
+    border-radius: 12px; /* Bordes redondeados */
+    padding: 2vh;
+    border:1px solid #88389c;
+    height: auto;
+}
+
+.proyecto:hover {
+    transform: translateY(-2px); /* Efecto al pasar el mouse */
+    box-shadow: 0 4px 10px #511661; /* Sombra */
+}
+.tecnologias{
+    text-align: center;
+    width: 30vh;
+    background: #511661;
+    box-shadow: 0 0 100px #511661;
+}
