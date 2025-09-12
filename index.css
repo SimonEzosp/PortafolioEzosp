@@ -188,7 +188,7 @@ textarea{
         padding: 1vh;
     }
     .contenido{
-        padding:5vh;
+        padding:4vh;
         border: 1px solid #88389c;
     }
     .containerProyectos{
@@ -228,7 +228,7 @@ textarea{
         padding: 1vh;
     }
     .contenido{
-        padding:5vh;
+        padding:3vh;
         border: 1px solid #88389c;
     }
     .containerProyectos{
@@ -245,13 +245,52 @@ textarea{
     }
     input{
         font-size: 1vh;
-        width: 50vh;
+        width: 40vh;
         padding: 1vh;
     }
     textarea{
         font-size: 1vh;
-        width: 50vh;
+        width: 40vh;
         height: 20vh;
         padding: 1vh;  
+    }
+}
+@media (max-width: 360px) {
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        margin: 0vh 0vh;
+    }
+    .container{
+        padding: 1vh;
+    }
+    .contenido{
+        padding:2vh;
+        border: 1px solid #88389c;
+    }
+    .containerProyectos{
+        display: grid;
+        padding: 2vh;
+        grid-template-columns: repeat(1, 1fr);
+        gap:2vh;
+        align-items: start;
+    }
+    .formulario{
+        border-radius: 12px;
+        padding: 0.5vh;
+        border:1px solid #88389c;
+    }
+    input{
+        font-size: 2vh;
+        width: 30vh;
+        padding: 0.5vh;
+    }
+    textarea{
+        font-size: 2vh;
+        width: 30vh;
+        height: 20vh;
+        padding: 0.5vh;  
     }
 }
