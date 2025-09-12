@@ -29,7 +29,7 @@ img{
 }
 button{
     padding: 1vh;
-    background:#88389c;
+    background:#ed96ff;
 }
 .iconNav{
     text-align: end;
@@ -77,4 +77,21 @@ button{
     width: 30vh;
     background: #511661;
     box-shadow: 0 0 100px #511661;
+}
+
+.formulario{
+    border-radius: 12px;
+    padding: 2vh;
+    border:1px solid #88389c;
+}
+input{
+    font-size: 2vh;
+    width: 50vh;
+    padding: 1vh;
+}
+textarea{
+    font-size: 2vh;
+    width: 50vh;
+    height: 20vh;
+    padding: 1vh;  
 }
