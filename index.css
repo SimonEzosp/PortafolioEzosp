@@ -11,13 +11,16 @@ body{
     margin: 0vh 30vh;
 }
 h1,h2,h3,h4{
-    margin:1vh 0vh;
+    margin:0.5vh 0vh;
+    line-height: 2.5vh;
 }
 h1,h2,h3{
     color: #ed96ff;
 }
 h1{
     text-align: center;
+    letter-spacing:0.5vh;
+    margin: 1vh 0vh;
 }
 
 h3,h4{
@@ -25,12 +28,20 @@ h3,h4{
 }
 img{
     width: 8vh;
-    height: 8vh;
+    height: 8vh;  
+}
+img:hover{
+    transform: translateY(5px); /* Efecto al pasar el mouse */
+    box-shadow: 0 0px 10px #511661; /* Sombra */
 }
 button{
     padding: 1vh;
     background:#ed96ff;
     border-radius: 20vh;
+}
+button:hover {
+    transform: translateY(-2px); /* Efecto al pasar el mouse */
+    box-shadow: 0 4px 10px #511661; /* Sombra */
 }
 .iconNav{
     text-align: end;
@@ -76,8 +87,6 @@ button{
 .tecnologias{
     text-align: center;
     width: 30vh;
-    background: #511661;
-    box-shadow: 0 0 100px #511661;
 }
 
 .formulario{
@@ -135,46 +144,6 @@ textarea{
         padding: 1vh;  
     }
 }
-@media (max-width: 768px) {
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    body{
-        margin: 0vh 0vh;
-    }
-    .container{
-        padding: 1vh;
-    }
-    .contenido{
-        padding:5vh;
-        border: 1px solid #88389c;
-    }
-    .containerProyectos{
-        display: grid;
-        padding: 2vh;
-        grid-template-columns: repeat(1, 1fr);
-        gap:2vh;
-        align-items: start;
-    }
-    .formulario{
-    border-radius: 12px;
-    padding: 2vh;
-    border:1px solid #88389c;
-    }
-    input{
-        font-size: 1vh;
-        width: 50vh;
-        padding: 1vh;
-    }
-    textarea{
-        font-size: 1vh;
-        width: 50vh;
-        height: 20vh;
-        padding: 1vh;  
-    }
-}
-
 
 @media (max-width: 768px) {
     *{
