@@ -102,7 +102,7 @@ button:hover {
 }
 .formulario{
     text-align: center;
-    max-width: 60vh;    
+    max-width: 100vh;    
     border-radius: 12px;
     padding: 4vh;
     border:1px solid #88389c;
@@ -112,13 +112,13 @@ button:hover {
 }
 input{
     font-size: 2vh;
-    width: 50vh;
+    width: 60vh;
     padding: 1vh;
 }
 textarea{
     font-size: 2vh;
-    max-width: 50vh;
-    min-width: 50vh;
+    max-width: 60vh;
+    min-width: 60vh;
     max-height: 20vh;
     min-height: 20vh;
     padding: 1vh;  
@@ -261,7 +261,7 @@ textarea{
     }
     .formulario{
         border-radius: 12px;
-        padding: 1vh;
+        padding: 2vh;
         border:1px solid #88389c;
     }
     input{
@@ -273,8 +273,8 @@ textarea{
         font-size: 1vh;
         min-width: 40vh;
         max-width: 40vh;
-        min-height: 20vh;
-        max-height: 20vh;
+        min-height: 30vh;
+        max-height: 30vh;
         padding: 1vh;  
     }
 }
@@ -320,20 +320,20 @@ textarea{
     }
     .formulario{
         border-radius: 12px;
-        padding: 1vh;
+        padding: 2vh;
         border:1px solid #88389c;
     }
     input{
         font-size: 2vh;
-        width: 30vh;
+        width: 40vh;
         padding: 0.5vh;
     }
     textarea{
         font-size: 2vh;
-        min-width: 30vh;
-        max-width: 30vh;
-        min-height: 20vh;
-        max-height: 20vh;
+        min-width: 40vh;
+        max-width: 40vh;
+        min-height: 30vh;
+        max-height: 30vh;
         padding: 0.5vh;  
     }
 }
