@@ -5,152 +5,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="assests/iconoPage.png">
-    <title>EzospDev</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous"
+        />
+
+    <title >EzospDev</title>
 </head>
 <header>
     <nav>
         <div>
-            <h1>EZOSP</h1>
+            <h1 class="text-center mb-2 mt-2">EZOSP</h1>
         </div>
-        <div class="iconNav">
+        <div class="iconNav text-end mt-3 mb-3">
            
-            <a href="https://github.com/SimonEzosp"><img class="icon" src="assests/github.svg" alt="github"></a>
-            <a href="https://www.linkedin.com/in/simon-david-rodriguez-ospina/"><img class="icon" src="assests/linkedin.svg" alt="linkedin   "></a>
+            <a href="https://github.com/SimonEzosp"><img class="icon" src="assests/github.svg" alt="github" width="60"></a>
+            <a href="https://www.linkedin.com/in/simon-david-rodriguez-ospina/"><img class="icon" src="assests/linkedin.svg" alt="linkedin" width="60"></a>
         </div>
     </nav>
 </header>
-<body>
-    <div class="container">
-        <section class="contenido">
-            <article class="">
-                <center><img  class="imgContenido" src="assests/simon.jpg" alt=""></center>
-                <h1>Simon Rodriguez</h1>
-                <h4>Full Stack Junior con experiencia desarrollando soluciones integrales con el stack MERN. Actualmente curso el 7° semestre de Ingeniería de    Software, fortaleciendo mis conocimientos en metodologías y herramientas modernas.
-                    Como Full Stack, he diseñado y desarrollado sistemas ERP de servicios técnicos: <br>
-                    Frontend: Interfaces interactivas con React.js, integración de APIs con Axios, autenticación de usuarios (login, registro, reset password)<br>
-                    Backend: Creación de APIs REST con Node.js y Express.js, manejo de MongoDB (Mongoose), validación de datos, CRUD, encriptación de contraseñas y autenticación segura con JWT.<br>
-                    Manejo Git/GitHub, consumo de REST API con Postman y tengo nivel intermedio en JavaScript.
-                    Soy proactivo, autodidacta y orientado a resultados, listo para asumir desafíos que impulsen la transformación digital y la eficiencia en entornos productivos.</h4>
-                    <button id="cv" type="button">Descargar CV</button>
-            </article>
-        </section>
+<body class="bg-gradient-custom">
+
+    <div class="card shadow-sl ">
+        <div class="card-body">
+            <center><img src="assests/simon.jpg" class="rounded-circle shadow mb-3" width="150" alt="Simon Rodriguez"></center>
+            <h2 class="card-title text-center">Simon Rodriguez</h2>
+            <h4>Full Stack Junior con experiencia en el stack MERN, . Actualmente curso el 7° semestre de Ingeniería de Software. con enfoque Full Stack. Experiencia en React, Angular, Node.js y MongoDB, creando soluciones web modernas y escalables.</h4>
+            <button id="cv" class="btn col-md-1 mt-3">Descargar CV</button>
+        </div>
     </div>
-    <h1>Proyectos</h1>
-    <div class="containerProyectos">           
-            <div class="proyecto">
-                <h1>NUBE</h1>
-                <h3>Backend</h3>
-                <h4>Este es un proyecto de la materia Arquitectura de Servidores Web, se baso en cloud computing con storage y base de datos. Se realizo una API con Nodejs y Express, con MongoDB como base de datos. EL proyecto se baso en que mediante un Formulario de registro, se pidió varios tipos de datos como string, int, date y opciones de Files para imagenes.</h4>
-                <h3>Se realizo:</h3>
-                <h4>-End points/rutas.</h4>
-                <h4>-Generacion de Token con JWT para el login.</h4>
-                <h4>-Duracion del token.</h4>
-                <h4>-Validacion del token.</h4>
-                <h4>-El modelo de la tabla/ se manejo 1 tabla ya que era solo con datos basicos personales.</h4>
-                <h4>-CRUD de los datos e imagen con sus respectivas restrincciones.</h4>
-                <h4>-parseo de imgaen para guardarse en base de datos de manera local.</h4>
-                <h4>-conexion a base de datos tanto local / como servidor. En MongoDB.</h4>
-                <h4>-Se implemento Docker.</h3>
-                <h3>Tecnologias: </h3>
-                <div class="tecnologias">
+    <h1 class="text-center mb-5 mt-5">Proyectos</h1>
+        <div class="container ">
+        <div class="row g-4">
+            <!-- Proyecto 1 -->
+            <div class="row-md-4">
+            <div class="card shadow-lg h-100">
+                <div class="card-body">
+                <h3 class="card-title text-center">NUBE</h3>
+                <h4 >Backend</h4>
+                <p class="card-text">
+                    Proyecto basado en Cloud Computing con Node.js, Express y MongoDB. Se desarrolló una API con autenticación JWT, CRUD de datos e integración con Docker.
+                </p>
+                <h4>Se realizo:</h4>
+                <p class="card-text">-End Points/rutas</p>
+                <p class="card-text">-Manejo de token con JWT(duracion, creacion, autenticacion)</p>
+                <p class="card-text">-Modelo de la tabla</p>
+                <p class="card-text">-CRUD</p>
+                <p class="card-text">-Conexión a base de datos local</p>
+                <p class="card-text">-Implementacion de Docker</p>
+                <h4 class=" mt-3">Tecnologías:</h4>
+                <div class="d-flex gap-2 flex-wrap col-md-4">
                     <marquee behavior="" direction="">
-                        <img src="assests/node-js.svg" alt="node-js">
-                        <img src="assests/Express-js.png" alt="express">
-                        <img src="assests/javascript.svg" alt="javascript">
-                        <img src="assests/mongodb.svg" alt="mongodb">
-                        <img src="assests/docker.svg" alt="docker">
+                        <img src="assests/node-js.svg" alt="node" width="60">
+                        <img src="assests/Express-js.png" alt="express" width="60">
+                        <img src="assests/javascript.svg" alt="js" width="60">
+                        <img src="assests/mongodb.svg" alt="mongodb" width="60">
+                        <img src="assests/docker.svg" alt="docker" width="60">
                     </marquee>
                 </div>
-                <h3>Link</h3>
-                <a href="https://github.com/SimonEzosp/proyectoNube-API">Github</a>
-
+                <a href="https://github.com/SimonEzosp/proyectoNube-API" target="_blank" class="btn  mt-3">Ver en GitHub</a>
+                </div>
             </div>
-            <div class="proyecto">
-                <h1>TASK</h1>
-                <h3>Frontend</h3>
-                <h4>Diseñar e implementar un sistema de gestion de tareas  que optimice la productividad mediante la gestion de tareas, recordatorios y seguimiento del progreso
-                </h4>
-                <h3>se realizo:</h3>
-                <h4>-Desarrollo de formularios de autenticación (login, registro, recuperación de contraseña).</h4>
-                <h4>-Limitar el acceso mediante rutas si no se ha autenticado.</h4>
-                <h4>-Conexión con APIs REST mediante Axios.</h4>
-                <h4>-Implementación de módulos con operaciones CRUD.</h4>               
-                <h3>Tecnologias: </h3>
-                <div class="tecnologias">
-                    <marquee behavior="" direction="">
-                        <img src="assests/react.svg" alt="react">
-                        <img src="assests/javascript.svg" alt="javascript">
-                    </marquee>
-                </div>
-                <h2>EN DESARROLLO...</h2>
             </div>
-    </div>
-    <h1>Experiencia</h1>
-    <div class="container">
-        <section class="contenido">
-            <article >
-                <h1>Yunex S.A.S</h1>
-                <h2>Desarrollador Full Stack Jr | Practicas | Noviembre 2022 - Junio 2023</h2>
-                <h4>Durante mi periodo de práctica profesional, participé activamente en el desarrollo de un sistema ERP
-                para la gestión de servicios técnicos, aplicando el stack MERN (MongoDB, Express.js, React.js, Node.js).
-                El proyecto incluyó la implementación de funcionalidades críticas del sistema, tanto en frontend.</h4>
-                <h3>Frontend (React.js con JavaScript):</h3>
-                <h4>-Desarrollo de formularios de autenticación (login, registro, recuperación de contraseña).</h4>
-                <h4>-Limitar el acceso mediante rutas si no se ha autenticado.</h4>
-                <h4>-Conexión con APIs REST mediante Axios.</h4>
-                <h4>-Implementación de módulos con operaciones CRUD.</h4>
-                <h3>Backend (Node.js con Express.js):</h3>
-                <h4>-Creación y estructuración de APIs REST.</h4>
-                <h4>-Integración con base de datos MongoDB utilizando Mongoose.</h4>
-                <h4>-Definición de esquemas (schemas) y modelos de datos.</h4>
-                <h4>-Implementación de rutas protegidas y consultas específicas (por código de producto).</h4>
-                <h4>-Validación de datos, encriptación de contraseñas (bcrypt) y autenticación mediante JWT.</h4>
-                <h3>Tecnologias: </h3>
-                <div class="tecnologias">
+
+            <!-- Proyecto 2 -->
+
+            <!-- Proyecto 3 -->
+            <div class="row-md-4">
+            <div class="card shadow-lg h-auto">
+                <div class="card-body">
+                <h3 class="card-title text-center">ISHOPPING</h3>
+                <h4>Frontend</h4>
+                <p class="card-text">
+                    En clase de Desarrollo de Ambientes Mobiles, se realizo en un proyecto donde usamos Angular con TypeScript y Ionic para el entorno mobile.
+                    Se baso en un Ecommerce consumiendo la API de <a href="https://fakestoreapi.com/">Fake Store API</a> se desarrollo la parte del cliente (logica y diseño)
+                </p>
+                <h4>Se realizó:</h4>
+                <p>-Pilares de Data Binding (Interpolacion,Property Binding, Event Binding, Two way Binding) </p>
+                <p>-Decoradores Input y Output</p>
+                <p>-Formularios Reactivos</p>
+                <p>-Inyección de Dependencias</p>
+                <p>-Gestion de Service</p>
+                <p>-Consumo de APIs con Observable y Suscribe</p>
+                <p>-Interfaces</p>
+                <button data-bs-toggle="modal" data-bs-target="#imagenesModal" class="btn">ver imagenes</button>
+
+                <div class="modal fade" id="imagenesModal" tabindex="-1" aria-labelledby="imagenesModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imagenesModalLabel">Galería de imágenes</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="overflow-auto" style="white-space: nowrap;">
+                            <img src="assests/ishopping/1.jpg" width="250">
+                            <img src="assests/ishopping/2.jpg" width="250">
+                            <img src="assests/ishopping/3.jpg" width="250">
+                            <img src="assests/ishopping/4.jpg" width="250">
+                            <img src="assests/ishopping/5.jpg" width="250">
+                            <img src="assests/ishopping/6.jpg" width="250">
+                            <img src="assests/ishopping/7.jpg" width="250">
+                            <img src="assests/ishopping/8.jpg" width="250">
+                            <img src="assests/ishopping/9.jpg" width="250">
+                            <img src="assests/ishopping/10.jpg" width="250">
+                            <img src="assests/ishopping/11.jpg" width="250">
+                            <img src="assests/ishopping/12.jpg" width="250">
+                            <img src="assests/ishopping/13.jpg" width="250">
+                            <img src="assests/ishopping/14.jpg" width="250">
+                            <img src="assests/ishopping/15.jpg" width="250">
+                            <img src="assests/ishopping/16.jpg" width="250">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <h4>Tecnologias:</h4>
+                <div class="d-flex gap-2 flex-wrap col-md-4">
                     <marquee behavior="" direction="">
-                        <img src="assests/mongodb.svg" alt="">
-                        <img src="assests/Express-js.png" alt="">
-                        <img src="assests/react.svg" alt="react">
-                        <img src="assests/node-js.svg" alt="">
-                        <img src="assests/javascript.svg" alt="javascript">
+                        <img src="assests/angular.svg" alt="node" width="60">
+                        <img src="assests/typescript.svg" alt="express" width="60">
+                        <img src="assests/ionic.svg" alt="js" width="60">
+                        <img src="assests/html.svg" alt="mongodb" width="60">
+                        <img src="assests/css.svg" alt="docker" width="60">
                     </marquee>
                 </div>
-            </article>
 
-        </section>
-    </div>
-    <h1>Educación</h1>
-    <div class="container">
-        <section class="contenido">
-            <article >
-                <h3>FUNDACION UNIVERSITARIA PARA EL DESARROLLO HUMANO | UNINPAHU</h3>
-                <h4>-Ingenieria de Software (7° semestre) | Febrero 2025 - Cursando</h4>
-            </article>
-            <article>
-                <h3>SERVICIO NACIONAL DE APRENDIZAJE | SENA</h3>
-                <h4>-Tecnologo en analisis y desarrollo de sistemas de informacion | Enero 2022 - Octubre 2023</h4>
-                <h4>-Tecnico en sistemas | Febrero 2020 - Noviembre 2021</h4>
-            </article>
-        </section>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    <h1 class="text-center mb-5 mt-5">Experiencia</h1>
+        <div class="card">
+        <div class="card-body">
+            <h3>YUNEX S.A.S</h3>
+            <h4>Desarrollador Full Stack Jr | Practicas | Noviembre 2022 - Junio 2023</h4>
+            <p>Durante mi periodo de práctica profesional, participé activamente en el desarrollo de un sistema ERP
+                        para la gestión de servicios técnicos, aplicando el stack MERN (MongoDB, Express.js, React.js, Node.js).
+                        El proyecto incluyó la implementación de funcionalidades críticas del sistema, tanto en frontend.</p>
+            <h4 >Frontend (React.js con JavaScript):</h4>
+            <p class="card-text" >-Desarrollo de formularios de autenticación (login, registro, recuperación de contraseña).</p>
+            <p class="card-text" >-Limitar el acceso mediante rutas si no se ha autenticado.</p>
+            <p class="card-text" >-Conexión con APIs REST mediante Axios.</p>
+            <p class="card-text" >-Implementación de módulos con operaciones CRUD.</p>
+            <h4 >Backend (Node.js con Express.js):</h4>
+            <p class="card-text" >-Creación y estructuración de APIs REST.</p>
+            <p class="card-text">-Integración con base de datos MongoDB utilizando Mongoose.</p>
+            <p class="card-text" >-Definición de esquemas (schemas) y modelos de datos.</p>
+            <p class="card-text" >-Implementación de rutas protegidas y consultas específicas (por código de producto).</p>
+            <p class="card-text" >-Validación de datos, encriptación de contraseñas (bcrypt) y autenticación mediante JWT.</p>
+            <h4>Tecnologias: </h4> 
+                <div class="tecnologias col-md-3">
+                    <marquee behavior="" direction="">
+                        <img class="imgTec" src="assests/mongodb.svg" alt="" width="40">
+                        <img class="imgTec" src="assests/Express-js.png" alt="" width="40">
+                        <img class="imgTec" src="assests/react.svg" alt="react" width="40">
+                        <img class="imgTec" src="assests/node-js.svg" alt="" width="40">
+                        <img class="imgTec" src="assests/javascript.svg" alt="javascript" width="40">
+                    </marquee>
+                </div>
+        </div>
+        </div>
 
-    </div>
-    <h1>Formulario</h1>
-    <div class="containerFormulario">
+    <h1 class="text-center mb-5 mt-5">Educación</h1>
+        <div class="card">
+        <div class="card-body">
+            <h4>FUNDACION UNIVERSITARIA PARA EL DESARROLLO HUMANO | UNINPAHU</h4>
+            <p>-Ingenieria de Software (7° semestre) | Febrero 2025 - Cursando</p>
+        </div>
+            <div class="card-body">
+            <h4 >SERVICIO NACIONAL DE APRENDIZAJE | SENA</h4>
+            <p>-Tecnologo en analisis y desarrollo de sistemas de informacion | Enero 2022 - Octubre 2023</p>
+            <p>-Tecnico en sistemas | Febrero 2020 - Noviembre 2021</p>
+        </div>
+        </div>
+
+    <h1 class="text-center mb-5 mt-5">Formulario</h1>
+        <div class="card-formulario">
+        <div class="card-body">
             <form class="formulario" action="https://formspree.io/f/xjkgnkny" method="post">
                 <h2 for="name">Nombre</h2>
-                <input name="name" id="name" type="text">
+                <input name="name" id="name" type="text" class="form-control">
 
                 <h2 for="email">Email</h2>
-                <input name="Email" id="email" type="email">
+                <input name="Email" id="email" type="email" class="form-control">
 
                 <h2 for="mensaje">Mensaje</h2>
-                <textarea name="mensaje" id="textarea"></textarea><br>
-                <button type="submit">Enviar</button>
+                <textarea name="mensaje" id="textarea" class="form-control"></textarea><br>
+                <button type="submit" class="btn">Enviar</button>
             </form>
-    </div>    
+        </div>
+        </div>
 
 </body>
-<footer style="text-align: center; padding: 1rem; margin-top: 2rem; font-size: 0.9rem; color: #ed96ff;">
+<footer style="text-align: center; padding: 1rem; margin-top: 2rem; font-size: 0.9rem; color:#b0e2e3 ;">
   &copy; <span id="year"></span> Ezosp. Todos los derechos reservados.
 </footer>
 
@@ -165,4 +218,11 @@
   })
 
 </script>
+
+<!-- Bootstrap JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>
 </html>
