@@ -17,12 +17,6 @@ h4,h5,p{
     background: linear-gradient(to right, #b0e2e3, #d1ffff)!important;
     margin: 0vh 4vh;
 }
-.card-formulario{
-    margin: auto auto !important;
-    padding: 4vh !important;
-    background: #b0e2e3 !important;
-    width: 50vh !important;
-}
 .btn{
     background: #003c3e !important;
     color: #b0e2e3 !important;
