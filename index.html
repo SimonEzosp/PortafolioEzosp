@@ -1,232 +1,634 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link rel="icon" href="assests/iconoPage.png">
-
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous"
-        />
-
-    <title >EzospDev</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EzospDev — Simón Rodriguez</title>
+<link rel="icon" href="assests/iconoPage.png">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #0f0f1a;
+    --purple: #7c3aed;
+    --purple-light: #a855f7;
+    --purple-dim: #4c1d95;
+    --accent: #c084fc;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #1e1b4b;
+    --card: #0d0d1f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+  .scroll-line {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--accent));
+    z-index: 100;
+    width: 0%;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 0;
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-tag {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+  .hero h1 span { color: var(--purple-light); }
+  .hero-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: 1.9;
+  }
+  .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .hero-photo {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    box-shadow: 0 0 40px rgba(124,58,237,0.2);
+    flex-shrink: 0;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary { background: var(--purple); color: #fff; border: 1px solid var(--purple); }
+  .btn-primary:hover { background: var(--purple-light); border-color: var(--purple-light); }
+  .btn-ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--purple); color: var(--accent); }
+  section { padding: 5rem 0; border-top: 1px solid var(--border); }
+  .section-label {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2.5rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 40px rgba(124,58,237,0.07);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 1.5rem;
+  }
+  .card:hover { border-color: var(--purple-dim); box-shadow: 0 4px 40px rgba(124,58,237,0.15); }
+  .card:last-child { margin-bottom: 0; }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .card-title { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: #fff; }
+  .card-badge {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(124,58,237,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(124,58,237,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .card-subtitle {
+    font-size: 11px;
+    color: var(--purple-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .card-desc { color: var(--text-muted); font-size: 13px; margin-bottom: 1.25rem; line-height: 1.8; }
+  .card-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+  }
+  .card-list li {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .card-list li::before { content: '▸'; color: var(--purple-light); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .tech-stack { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .tech-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .card-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .exp-section-title {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 1.25rem 0 0.75rem;
+  }
+  .exp-period { font-size: 11px; color: var(--text-muted); }
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 40px rgba(124,58,237,0.07);
+  }
+  .edu-card:last-child { margin-bottom: 0; }
+  .edu-school { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+  .edu-degree { font-size: 12px; color: var(--text-muted); }
+  .edu-period { font-size: 11px; color: var(--purple-light); white-space: nowrap; }
+  .contact-form { display: grid; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 11px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; }
+  .form-group input, .form-group textarea {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+    width: 100%;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--purple); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  footer {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-text { font-size: 11px; color: var(--text-muted); }
+  .footer-links { display: flex; gap: 1rem; }
+  .footer-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-head h3 { font-family: 'Syne', sans-serif; font-size: 1rem; color: #fff; }
+  .modal-close { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; line-height: 1; padding: 0; }
+  .modal-close:hover { color: #fff; }
+  .modal-body {
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  .modal-body img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    object-fit: cover;
+    aspect-ratio: 9/16;
+  }
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .container { padding: 0 1.25rem; }
+    .hero { padding: 4rem 0; min-height: auto; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { width: 90px; height: 90px; }
+    .hero h1 { font-size: 2.8rem; }
+    .card { padding: 1.5rem; }
+    .card-list { grid-template-columns: 1fr; }
+    .card-footer { flex-direction: column; align-items: flex-start; }
+    .form-row { grid-template-columns: 1fr; }
+    .edu-card { flex-direction: column; }
+    footer { flex-direction: column; align-items: flex-start; }
+    .modal-body { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 3.5rem 0; }
+  }
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 2.2rem; }
+    .hero-links { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
 </head>
-<header>
-    <h1 class="text-center mb-2 mt-2">ezosp</h1>
-</header>
-<body class="bg-gradient-custom">
+<body>
 
+<div class="scroll-line" id="scrollLine"></div>
 
-
-    <div class="card mb-3 p-3 text-center">
-    <div class="row g-0">
-        <div class="col-12 col-sm-6 col-md-2 ">
-        <img src="assests/simon.png" class="img-fluid" width="" alt="Simon Rodriguez">
-        </div>
-        <div class="col-12 col-sm-6 col-md-10">
-        <div class="card-body">
-            <h2 class="card-title ">Simón Rodriguez</h2>
-            <p class="card-text">Full Stack Junior con 6 meses de experiencia en el stack MERN, . Actualmente curso el 8° semestre de Ingeniería de Software. con enfoque Full Stack. Experiencia (Junior) en React, Angular, Node.js y MongoDB, creando soluciones web modernas y escalables.</p>
-            <a href="https://github.com/SimonEzosp"><img class="icon" src="assests/github.svg" alt="github" width="60"></a>
-            <a href="https://www.linkedin.com/in/simon-david-rodriguez-ospina/"><img class="icon" src="assests/linkedin.svg" alt="linkedin" width="60"></a> 
-            <button id="cv" class="btn">Descargar CV</button>
-        </div>
-        </div>
+<!-- MODALES -->
+<div class="modal-overlay" id="modal-ishopping" onclick="closeModal('ishopping')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-head">
+      <h3>iShopping — Galería</h3>
+      <button class="modal-close" onclick="closeModal('ishopping')">×</button>
     </div>
+    <div class="modal-body">
+      <img src="assests/ishopping/1.jpg" alt="1"><img src="assests/ishopping/2.jpg" alt="2">
+      <img src="assests/ishopping/3.jpg" alt="3"><img src="assests/ishopping/4.jpg" alt="4">
+      <img src="assests/ishopping/5.jpg" alt="5"><img src="assests/ishopping/6.jpg" alt="6">
+      <img src="assests/ishopping/7.jpg" alt="7"><img src="assests/ishopping/8.jpg" alt="8">
+      <img src="assests/ishopping/9.jpg" alt="9"><img src="assests/ishopping/10.jpg" alt="10">
+      <img src="assests/ishopping/11.jpg" alt="11"><img src="assests/ishopping/12.jpg" alt="12">
+      <img src="assests/ishopping/13.jpg" alt="13"><img src="assests/ishopping/14.jpg" alt="14">
+      <img src="assests/ishopping/15.jpg" alt="15"><img src="assests/ishopping/16.jpg" alt="16">
     </div>
-    <h1 class="text-center mb-5 mt-5">PROYECTOS</h1>
-        <div class="container ">
-        <div class="row g-4">
-            <!-- Proyecto 1 -->
-            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-            <div class="card shadow-lg h-100">
-                <div class="card-body">
-                <h3 class="card-title text-center">NUBE</h3>
-                <h4 >Backend (Junior)</h4>
-                <p class="card-text">
-                    Proyecto basado en Cloud Computing, desarrollado con Node.js, Express y MongoDB. Se implementó una API con autenticación JWT, operaciones CRUD e integración con Docker.
-                </p>
-                <h4>Se realizó:</h4>
-                <p class="card-text">-End Points/rutas</p>
-                <p class="card-text">-Manejo de token con JWT(duración, creación, autenticación)</p>
-                <p class="card-text">-Modelo de la tabla</p>
-                <p class="card-text">-CRUD</p>
-                <p class="card-text">-Conexión a base de datos local</p>
-                <p class="card-text">-Implementación de Docker</p>
-                <h4 class=" mt-3">Tecnologías:</h4>
-                <div class="d-flex gap-2 flex-wrap col-md-4">
-                    <marquee behavior="" direction="">
-                        <img src="assests/node-js.svg" alt="node" width="60">
-                        <img src="assests/Express-js.png" alt="express" width="60">
-                        <img src="assests/javascript.svg" alt="js" width="60">
-                        <img src="assests/mongodb.svg" alt="mongodb" width="60">
-                        <img src="assests/docker.svg" alt="docker" width="60">
-                    </marquee>
-                </div>
-                <a href="https://github.com/SimonEzosp/proyectoNube-API" target="_blank" class="btn  mt-3">Ver en GitHub</a>
-                </div>
-            </div>
-            </div>
+  </div>
+</div>
 
-            <!-- Proyecto 2 -->
+<div class="modal-overlay" id="modal-drugx" onclick="closeModal('drugx')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-head">
+      <h3>DrugX System — Galería</h3>
+      <button class="modal-close" onclick="closeModal('drugx')">×</button>
+    </div>
+    <div class="modal-body">
+      <img src="assests/drugxsystem/Screenshot_20260421-224809.jpg" alt="1">
+      <img src="assests/drugxsystem/Screenshot_20260421-224816.jpg" alt="2">
+      <img src="assests/drugxsystem/Screenshot_20260421-224818.jpg" alt="3">
+      <img src="assests/drugxsystem/Screenshot_20260421-224843.jpg" alt="4">
+      <img src="assests/drugxsystem/Screenshot_20260421-224850.jpg" alt="5">
+      <img src="assests/drugxsystem/Screenshot_20260421-224858.jpg" alt="6">
+      <img src="assests/drugxsystem/Screenshot_20260421-224903.jpg" alt="7">
+    </div>
+  </div>
+</div>
 
-            <!-- Proyecto 3 -->
-            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-            <div class="card shadow-lg h-auto">
-                <div class="card-body">
-                <h3 class="card-title text-center">ISHOPPING</h3>
-                <h4>Frontend (Junior)</h4>
-                <p class="card-text">
-                    En clase de Desarrollo de Ambientes Móviles, se realizó un proyecto donde usamos Angular con TypeScript e Ionic para el entorno móvil.
-                    El proyecto basó en un e-commerce consumiendo la API de <a href="https://fakestoreapi.com/">Fake Store API</a> se desarrolló la parte del cliente (lógica y diseño)
-                </p>
-                <h4>Se realizó:</h4>
-                <p>-Pilares de Data Binding (Interpolación,Property Binding, Event Binding, Two way Binding) </p>
-                <p>-Decoradores Input y Output</p>
-                <p>-Formularios Reactivos</p>
-                <p>-Inyección de Dependencias</p>
-                <p>-Gestión de Service</p>
-                <p>-Consumo de APIs con Observable y Suscribe</p>
-                <p>-Interfaces</p>
-                <button data-bs-toggle="modal" data-bs-target="#imagenesModal" class="btn">ver imagenes</button>
+<div class="container">
 
-                <div class="modal fade" id="imagenesModal" tabindex="-1" aria-labelledby="imagenesModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="imagenesModalLabel">Galería de imágenes</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="overflow-auto" style="white-space: nowrap;">
-                            <img src="assests/ishopping/1.jpg" width="250">
-                            <img src="assests/ishopping/2.jpg" width="250">
-                            <img src="assests/ishopping/3.jpg" width="250">
-                            <img src="assests/ishopping/4.jpg" width="250">
-                            <img src="assests/ishopping/5.jpg" width="250">
-                            <img src="assests/ishopping/6.jpg" width="250">
-                            <img src="assests/ishopping/7.jpg" width="250">
-                            <img src="assests/ishopping/8.jpg" width="250">
-                            <img src="assests/ishopping/9.jpg" width="250">
-                            <img src="assests/ishopping/10.jpg" width="250">
-                            <img src="assests/ishopping/11.jpg" width="250">
-                            <img src="assests/ishopping/12.jpg" width="250">
-                            <img src="assests/ishopping/13.jpg" width="250">
-                            <img src="assests/ishopping/14.jpg" width="250">
-                            <img src="assests/ishopping/15.jpg" width="250">
-                            <img src="assests/ishopping/16.jpg" width="250">
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <h4 class=" mt-3">Tecnologías:</h4>
-                <div class="d-flex gap-2 flex-wrap col-md-4">
-                    <marquee behavior="" direction="">
-                        <img src="assests/angular.svg" alt="node" width="60">
-                        <img src="assests/typescript.svg" alt="express" width="60">
-                        <img src="assests/ionic.svg" alt="js" width="60">
-                        <img src="assests/html.svg" alt="mongodb" width="60">
-                        <img src="assests/css.svg" alt="docker" width="60">
-                    </marquee>
-                </div>
-
-                </div>
-                </div>
-            </div>
-            </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">Disponible para proyectos</div>
+        <h1>Simón<br><span>Rodriguez</span></h1>
+        <p class="hero-desc">
+          Full Stack Junior con 6 meses de experiencia en el stack MERN.
+          Actualmente en 8° semestre de Ingeniería de Software en UNINPAHU.
+          Experiencia en React, Angular, Node.js y MongoDB.
+        </p>
+        <div class="hero-links">
+          <a href="https://github.com/SimonEzosp" target="_blank" class="btn btn-primary">GitHub</a>
+          <a href="https://www.linkedin.com/in/simon-david-rodriguez-ospina/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+          <button class="btn btn-ghost" id="cvBtn">Descargar CV</button>
         </div>
-        </div>
-    <h1 class="text-center mb-5 mt-5">EXPERIENCIA</h1>
-        <div class="card" >
-            <div class="card-body">
-                <h3>YUNEX S.A.S</h3>
-                <h4>Desarrollador Full Stack Jr | Practicas (Tecnólogo) | Noviembre 2022 - Junio 2023</h4>
-                <p>Durante mi periodo de práctica profesional, participé activamente en el desarrollo de un sistema ERP
-                    para la gestión de servicios técnicos, aplicando el stack MERN (MongoDB, Express.js, React.js, Node.js).
-                    El proyecto incluyó la implementación de funcionalidades críticas del sistema, tanto en frontend.</p>
-                <h4 >Frontend (React.js con JavaScript):</h4>
-                <p class="card-text" >-Desarrollo de formularios de autenticación (login, registro, recuperación de contraseña).</p>
-                <p class="card-text" >-Limitar el acceso mediante rutas si no se ha autenticado.</p>
-                <p class="card-text" >-Conexión con APIs REST mediante Axios.</p>
-                <p class="card-text" >-Implementación de módulos con operaciones CRUD.</p>
-                <h4 >Backend (Node.js con Express.js):</h4>
-                <p class="card-text" >-Creación y estructuración de APIs REST.</p>
-                <p class="card-text">-Integración con base de datos MongoDB utilizando Mongoose.</p>
-                <p class="card-text" >-Definición de esquemas (schemas) y modelos de datos.</p>
-                <p class="card-text" >-Implementación de rutas protegidas y consultas específicas (por código de producto).</p>
-                <p class="card-text" >-Validación de datos, encriptación de contraseñas (bcrypt) y autenticación mediante JWT.</p>
-                <h4>Tecnologías: </h4> 
-                    <div class="tecnologias col-md-3">
-                        <marquee behavior="" direction="">
-                            <img class="imgTec" src="assests/mongodb.svg" alt="" width="40">
-                            <img class="imgTec" src="assests/Express-js.png" alt="" width="40">
-                            <img class="imgTec" src="assests/react.svg" alt="react" width="40">
-                            <img class="imgTec" src="assests/node-js.svg" alt="" width="40">
-                            <img class="imgTec" src="assests/javascript.svg" alt="javascript" width="40">
-                        </marquee>
-                    </div>
-            </div>
-        </div>
+      </div>
+      <img src="assests/simon.png" alt="Simón Rodriguez" class="hero-photo">
+    </div>
+  </section>
 
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <div class="section-label">002 — Proyectos</div>
 
-    <h1 class="text-center mb-5 mt-5">EDUCACIÓN</h1>
-        <div class="card">
-        <div class="card-body">
-            <h4>FUNDACIÓN UNIVERSITARIA PARA EL DESARROLLO HUMANO | UNINPAHU</h4>
-            <p>-Ingeniería de Software (8° semestre) | Febrero 2025 - En curso</p>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">DrXgs System</div>
+        <span class="card-badge">Frontend + Mobile</span>
+      </div>
+      <div class="card-subtitle">Ionic · Angular · TypeScript · FastAPI · MySQL</div>
+      <p class="card-desc">Aplicación híbrida web y móvil para gestión de una farmacia de barrio. Lógica de negocio completa, autenticación por roles, CRUD y despliegue en producción.</p>
+      <ul class="card-list">
+        <li>Data Binding (4 pilares)</li>
+        <li>Decoradores Input/Output</li>
+        <li>Guards de rutas por rol</li>
+        <li>Autenticación JWT</li>
+        <li>Interceptores HTTP</li>
+        <li>Sidemenu dinámico por rol</li>
+        <li>CRUD productos, ventas, catálogos</li>
+        <li>Dashboard con Chart.js</li>
+        <li>Gestión de usuarios</li>
+        <li>APK Android con Capacitor</li>
+        <li>Deploy Railway + Vercel</li>
+        <li>Docker + MySQL</li>
+      </ul>
+      <div class="card-footer">
+        <div class="tech-stack">
+          <span class="tech-tag">Ionic</span><span class="tech-tag">Angular</span>
+          <span class="tech-tag">TypeScript</span><span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">MySQL</span><span class="tech-tag">Docker</span>
+          <span class="tech-tag">Chart.js</span><span class="tech-tag">Capacitor</span>
         </div>
-            <div class="card-body">
-            <h4 >SERVICIO NACIONAL DE APRENDIZAJE | SENA</h4>
-            <p>-Tecnólogo en Análisis y Desarrollo de Sistemas de Información | Enero 2022 - Octubre 2023</p>
-            <p>-Técnico en Sistemas | Febrero 2020 - Noviembre 2021</p>
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="openModal('drugx')">Ver imágenes</button>
+                <a href="https://github.com/SimonEzosp/DrugxApp/releases/download/v1.0/app-debug.apk" target="_blank" class="btn btn-primary">
+            📱 Descargar APK
+            </a>
+            <a href="https://drugx-app.vercel.app/home" target="_blank" class="btn btn-primary">Visitar sitio</a>
         </div>
-        </div>
+      </div>
+    </div>
 
-    <h1 class="text-center mb-5 mt-5">FORMULARIO</h1>
-        <div class="card">
-        <div class="card-body">
-            <form class="formulario" action="https://formspree.io/f/xjkgnkny" method="post">
-                <h2 for="name">Nombre</h2>
-                <input name="name" id="name" type="text" class="form-control">
-
-                <h2 for="email">Email</h2>
-                <input name="Email" id="email" type="email" class="form-control">
-
-                <h2 for="mensaje">Mensaje</h2>
-                <textarea name="mensaje" id="textarea" class="form-control"></textarea><br>
-                <button type="submit" class="btn">Enviar</button>
-            </form>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">iShopping</div>
+        <span class="card-badge">Frontend Mobile</span>
+      </div>
+      <div class="card-subtitle">Ionic · Angular · TypeScript</div>
+      <p class="card-desc">E-commerce móvil consumiendo Fake Store API. Aplicando los pilares de Angular con Ionic en clase de Desarrollo de Ambientes Móviles.</p>
+      <ul class="card-list">
+        <li>Data Binding (4 pilares)</li>
+        <li>Decoradores Input/Output</li>
+        <li>Formularios Reactivos</li>
+        <li>Inyección de Dependencias</li>
+        <li>Services con Observable</li>
+        <li>Interfaces TypeScript</li>
+      </ul>
+      <div class="card-footer">
+        <div class="tech-stack">
+          <span class="tech-tag">Angular</span><span class="tech-tag">Ionic</span>
+          <span class="tech-tag">TypeScript</span><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span>
         </div>
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="openModal('ishopping')">Ver imágenes</button>
+            <a href="https://github.com/SimonEzosp/Ecomerce/releases/download/v1.0/app-debug.apk" target="_blank" class="btn btn-primary">
+            📱 Descargar APK
+            </a>
+            <a href="https://ecomerce-wheat-one.vercel.app/" target="_blank" class="btn btn-primary">Visitar sitio</a>
         </div>
+      </div>
+    </div>
 
-</body>
-<footer style="text-align: center; padding: 1rem; margin-top: 2rem; font-size: 0.9rem; color:#b0e2e3 ;">
-  &copy; <span id="year"></span> Ezosp. Todos los derechos reservados.
-</footer>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Nube API</div>
+        <span class="card-badge">Backend</span>
+      </div>
+      <div class="card-subtitle">Node.js · Express · MongoDB</div>
+      <p class="card-desc">API REST basada en Cloud Computing con autenticación JWT, CRUD e integración con Docker.</p>
+      <ul class="card-list">
+        <li>Endpoints REST</li>
+        <li>JWT (creación, duración, auth)</li>
+        <li>CRUD completo</li>
+        <li>Modelo de datos</li>
+        <li>Conexión MongoDB</li>
+        <li>Docker</li>
+      </ul>
+      <div class="card-footer">
+        <div class="tech-stack">
+          <span class="tech-tag">Node.js</span><span class="tech-tag">Express</span>
+          <span class="tech-tag">MongoDB</span><span class="tech-tag">Docker</span><span class="tech-tag">JWT</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://github.com/SimonEzosp/proyectoNube-API" target="_blank" class="btn btn-ghost">Ver repo →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia">
+    <div class="section-label">003 — Experiencia</div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Yunex S.A.S</div>
+        <span class="exp-period">Nov 2022 — Jun 2023</span>
+      </div>
+      <div class="card-subtitle">Desarrollador Full Stack Jr · Prácticas (Tecnólogo)</div>
+      <p class="card-desc">Desarrollo de un sistema ERP para gestión de servicios técnicos usando el stack MERN en un entorno productivo real.</p>
+      <div class="exp-section-title">Frontend — React.js</div>
+      <ul class="card-list">
+        <li>Formularios de autenticación</li>
+        <li>Rutas protegidas</li>
+        <li>Consumo APIs con Axios</li>
+        <li>Módulos CRUD</li>
+      </ul>
+      <div class="exp-section-title">Backend — Node.js + Express</div>
+      <ul class="card-list">
+        <li>APIs REST estructuradas</li>
+        <li>MongoDB + Mongoose</li>
+        <li>Rutas protegidas JWT</li>
+        <li>bcrypt + validación de datos</li>
+      </ul>
+      <div class="card-footer">
+        <div class="tech-stack">
+          <span class="tech-tag">React</span><span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Express</span><span class="tech-tag">MongoDB</span>
+          <span class="tech-tag">JavaScript</span><span class="tech-tag">JWT</span><span class="tech-tag">bcrypt</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCACIÓN -->
+  <section id="educacion">
+    <div class="section-label">004 — Educación</div>
+    <div class="edu-card">
+      <div><div class="edu-school">UNINPAHU</div><div class="edu-degree">Ingeniería de Software (8° semestre)</div></div>
+      <div class="edu-period">Feb 2025 — En curso</div>
+    </div>
+    <div class="edu-card">
+      <div><div class="edu-school">SENA</div><div class="edu-degree">Tecnólogo en Análisis y Desarrollo de Sistemas de Información</div></div>
+      <div class="edu-period">Ene 2022 — Oct 2023</div>
+    </div>
+    <div class="edu-card">
+      <div><div class="edu-school">SENA</div><div class="edu-degree">Técnico en Sistemas</div></div>
+      <div class="edu-period">Feb 2020 — Nov 2021</div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="section-label">005 — Contacto</div>
+    <div class="section-title">Hablemos</div>
+    <form class="contact-form" action="https://formspree.io/f/xjkgnkny" method="post">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" name="name" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="Email" placeholder="tu@email.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+      </div>
+      <div><button type="submit" class="btn btn-primary">Enviar mensaje →</button></div>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-text">© <span id="year"></span> Ezosp. Todos los derechos reservados.</div>
+    <div class="footer-links">
+      <a href="https://github.com/SimonEzosp" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/simon-david-rodriguez-ospina/" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+</div>
+
 <script>
-    alert("esta pagina esta hecha con: HTML, BOOSTRAP, JAVASCRIPT")
-</script>
-<script>
-  // Actualiza el año automáticamente
-  document.getElementById("year").textContent = new Date().getFullYear();
-  document.getElementById("cv").addEventListener("click",function(){
-    const link = document.createElement("a");
-    link.href ="CV-SIMON_RODRIGUEZ.pdf";
-    link.download = "CV-SIMON_RODRIGUEZ.pdf"; // nombre con el que se descargará
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('scrollLine').style.width = scrolled + '%';
+  });
+
+  document.getElementById('cvBtn').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = 'CV-SIMON_RODRIGUEZ.pdf';
+    link.download = 'CV-SIMON_RODRIGUEZ.pdf';
     link.click();
-  })
+  });
 
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
 </script>
-
-<!-- Bootstrap JS -->
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-  crossorigin="anonymous"
-></script>
+</body>
 </html>
